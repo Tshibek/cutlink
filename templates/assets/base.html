@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% include 'assets/head.html' %}
+</head>
+<body>
+{% block navbar %}{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+
+{% include 'assets/scripts.html' %}
+{% block javascript %}{% endblock %}
+</body>
+</html>
