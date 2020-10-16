@@ -11,10 +11,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-def short_link():
-    letters_and_digits = string.ascii_letters + string.digits
-    result_str = ''.join((random.choice(letters_and_digits) for i in range(10)))
-    return result_str
 
 
 class UrlShortcut(models.Model):
@@ -33,6 +29,7 @@ class UrlShortcut(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
+
         if not self.id:
-            self.short = md5(self.link.encode().hexdigest()[:10])
+            self.short = md5(self.link.encode()).hexdigest()[:10]
         return super().save(*args, **kwargs)

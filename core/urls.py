@@ -1,8 +1,10 @@
 from django.urls import path
 
-from .views import HomePageView
+from . import views
 app_name = 'core'
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+    path('', views.HomePageView.as_view(), name='home'),
+    path('shortcut', views.shortcutCreate, name='create_link'),
+    path('<slug>', views.shortcutShow, name='show_link')
 ]
